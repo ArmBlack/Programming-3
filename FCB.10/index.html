@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <style>
+    
+   .button {
+     background-color: #000000; /* Green */
+     border: none;
+     color: rgb(255, 255, 255);
+     padding: 16px 32px;
+     text-align: center;
+     text-decoration: none;
+     display: inline-block;
+     font-size: 15px;
+     margin: 4px 2px;
+     cursor: pointer;
+
+     
+    }
+   
+  
+ 
+.button{
+    letter-spacing: 3px;
+  }
+
+
+  
+  
+   .button2 {background-color: #000000;} /* Blue */
+   .button3 {background-color: #000000;} /* Red */ 
+   .button4 {background-color: #000000; color: rgb(255, 255, 255);} /* Gray */ 
+   .button5 {background-color: #000000;} /* Black */
+.button1 {border-radius: 20px;}
+.button2 {border-radius: 20px;}
+.button3 {border-radius: 20px;}
+.button4 {border-radius: 20px;}
+.button5 {border-radius: 20px;}
+.button1 {
+  background-color: rgba(0, 0, 0, 0.382);
+  color: rgb(255, 255, 255);
+  border: 2px solid #ffffff; /* Green */
+}
+.button2 {
+  background-color: rgba(0, 0, 0, 0.382);
+  color: rgb(255, 255, 255);
+  border: 2px solid #ffffff; /* Green */
+}
+.button3 {
+  background-color: rgba(0, 0, 0, 0.382);
+  color: rgb(255, 255, 255);
+  border: 2px solid #ffffff; /* Green */
+}
+.button4 {
+  background-color: rgba(0, 0, 0, 0.382);
+  color: rgb(255, 255, 255);
+  border: 2px solid #ffffff; /* Green */
+}
+.button5 {
+  background-color: rgba(0, 0, 0, 0.382);
+  color: rgb(255, 255, 255);
+  border: 2px solid #ffffff; /* Green */
+}
+.button {
+  transition-duration: 0.4s;
+}
+
+.button:hover {
+  background-color: #0000003c; /* Green */
+  color: rgba(255, 0, 0, 0.28);
+}
+
+
+        body{
+            background-size: cover;
+        background-image: url("img/ball.png");
+         
+        }
+               
+          canvas{
+             margin-left: 23%;
+           margin-top: 5%;
+          }
+        
+        
+          audio, embed {
+            position: absolute;
+            z-index: -9999;
+        }
+        h1{
+            text-align: center;
+            color:rgba(255, 255, 255, 0.729)        }
+        h2{
+            text-align: center;
+            color:rgb(255, 0, 0)        }
+        .fl{
+            display: flex;
+            justify-content: center;
+            color:rgb(0, 0, 0)        }
+        </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FCB.10</title>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
+    <script src="class/grass.js"></script>
+    <script src="class/grassEater.js"></script>
+    <script src="class/predator.js"></script>
+    <script src="class/ball.js"></script>
+    <script src="class/wall.js"></script>
+    <script src="class/player.js"></script>
+    <script src="class/divader.js"></script>
+    <script src="class/EaterHelper.js"></script>
+    <script src="class/ meteor.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+   <h1>䷧ Game Of Live   ䷧ </h1>
+   <h2>䷧ Arm_Black   ䷧ </h2>
+   <a href="start.html"></a>
+  
+  
+  
+   <body>
+   
+   
+   
+   
+   <div class="fl">
+   <button class="button button1"  onclick="Reset()">ʀᴇꜱᴛᴀʀᴛ</button>
+   <button class="button button2"  onclick="Kill()">ᴋɪʟʟ ᴀʟʟ</button>
+   <button class="button button3"  onclick="AddGrass()">ᴀᴅᴅ ɢʀᴀꜱꜱ</button>
+   <button class="button button4"  onclick="AddGrassEater()">ᴀᴅᴅ ɢʀᴀꜱꜱᴇᴀᴛᴇʀ</button>
+   <button class="button button5"  onclick="AddPredator()">ᴀᴅᴅ ᴘʀᴇᴅᴀᴛᴏʀ</button>
+</div>
+</body>
+
+</html>
