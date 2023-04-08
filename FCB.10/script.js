@@ -340,8 +340,8 @@ for (let i = 0; i < grassEaterArr.length; i++) {
     const eater = grassEaterArr[i];
     eater.eat();
 }
-for (let i = 0; i < PredatorArr.length; i++) {
-    const eater = PredatorArr[i];
+for (let i = 0; i < predatorArr.length; i++) {
+    const eater = predatorArr[i];
     eater.eat();
 }
 // if (grassArr == 0 && grassEaterArr == 0){
