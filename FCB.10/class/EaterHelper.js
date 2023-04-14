@@ -1,4 +1,6 @@
-class EaterHelper {
+let LivingCreature = require("./LivingCreature")
+
+module.exports=class EaterHelper extends LivingCreature{
     constructor(x, y) {
         this.x = x;
         this.y = y;

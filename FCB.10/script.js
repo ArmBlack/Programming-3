@@ -1,4 +1,4 @@
-function matrixGenerator(matrixSize, grass, grassEater, predator, ball, wall, player, divader, eaterHelper,meteor) {
+function matrixGenerator(matrixSize, grass, grassEater, predator, ball, wall, player, divader, eaterHelper,meteor,empty) {
     var matrix = []
 
     for (var i = 0; i < matrixSize; i++) {
@@ -33,7 +33,17 @@ function matrixGenerator(matrixSize, grass, grassEater, predator, ball, wall, pl
         }
 
     }
+    for (let i = 0; i < empty; i++) {
 
+        var x = Math.floor(Math.random() * matrixSize)
+        var y = Math.floor(Math.random() * matrixSize)
+
+        if (matrix[y][x] == 0) {
+            
+            matrix[y][x] = 10
+        }
+
+    }
 
 
     for (let i = 0; i < predator; i++) {
@@ -130,7 +140,7 @@ function matrixGenerator(matrixSize, grass, grassEater, predator, ball, wall, pl
         var x = Math.floor(Math.random() * matrixSize)
         var y = Math.floor(Math.random() * matrixSize)
 
-        matrix[y][x] = 10
+        matrix[y][x] = 9
 
     }
     // for (let i = 0; i < Police; i++) {
@@ -152,7 +162,7 @@ function matrixGenerator(matrixSize, grass, grassEater, predator, ball, wall, pl
 
 
 
-var matrix = matrixGenerator(30,30,15,25,2,6,21,20,24)
+var matrix = matrixGenerator(30,30,15,25,2,6,21,20,24,25,46)
 var side = 35
 
 
@@ -164,8 +174,8 @@ var wallArr = []
 var playerArr = []
 var divaderArr = []
 var EaterHelperArr = []
-var mediorArr = []
-
+var metiorArr = []
+var emptyArr = []
 
 function setup() {
     frameRate(7)
@@ -198,6 +208,9 @@ function setup() {
             } else if (matrix[y][x] == 8) {
                 var  help= new EaterHelper(x, y)
                 EaterHelperArr.push(help)
+            }else if (matrix[y][x] == 10) {
+                var  help= new Empty(x, y)
+                emptyArr.push(help)
             }
         }
 
@@ -308,13 +321,11 @@ function draw() {
     for (let i in EaterHelperArr) {
         EaterHelperArr[i].move()
     }
-    for (let i in mediorArr) {
-        mediorArr[i].move()
+    for (let i in metiorArr) {
+        metiorArr[i].move()
     }
 
-    for (let f in mediorArr) {
-        mediorArr[f].move()
-    }
+   
 
 }
 function  Reset(){
@@ -325,10 +336,13 @@ function Kill(){
     for (let y = 0; y < matrix.length; y++) {
         for (let x = 0; x < matrix[y].length; x++){
             matrix[x][y]== 0
+            Window.location.matrix[x][y]=0()            
+            break
             }
         
-    break
+            
         }
+        
 }
 
 for (let i = 0; i < grassArr.length; i++) {
@@ -349,7 +363,7 @@ for (let i = 0; i < predatorArr.length; i++) {
 //         Window.matrix.wall.Kill()
 //     }
 // }
-// if (grassArr == 0 && grassEaterArr == 0 && predatorArr == 0 && divaderArr == 0 ){
+// if (matrixGenerator= grassArr){
 
 // Window.location.reload()
 

@@ -1,4 +1,6 @@
-class Player {
+let LivingCreature = require("./LivingCreature")
+
+module.exports=class Player extends LivingCreature{
     constructor(x, y) {
         this.x = x;
         this.y = y;
