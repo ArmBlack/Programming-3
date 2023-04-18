@@ -43,7 +43,7 @@ module.exports =class Meteor extends LivingCreature{
     }
     move() {
         let emptyCell = this.chooseCell(0);
-        let newCell = random(emptyCell)
+        let newCell = emptyCell[Math.floor(Math.random()*emptyCell)]
 
         if (newCell) {
             let newX = newCell[0];

@@ -57,7 +57,7 @@ module.exports=class Divader extends LivingCreature{
 
     eat(){
         let emptyCell = this.chooseCell(1, 2,5,6 );
-        let newCell = random(emptyCell)
+        let newCell = emptyCell[Math.floor(Math.random()*emptyCell)]
 
         if (newCell) {
             this.energy += 5;

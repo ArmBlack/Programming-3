@@ -47,7 +47,7 @@ module.exports=class EaterHelper extends LivingCreature{
     //բազմանալ
     mul() {
         let emptyCell = this.chooseCell(0);
-        let newCell = random(emptyCell)
+        let newCell = emptyCell[Math.floor(Math.random()*emptyCell)]
             ;
         if (newCell && this.energy > 5) {
             let newX = newCell[0];

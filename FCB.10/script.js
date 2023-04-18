@@ -1,185 +1,10 @@
-function matrixGenerator(matrixSize, grass, grassEater, predator, ball, wall, player, divader, eaterHelper,meteor,empty) {
-    var matrix = []
 
-    for (var i = 0; i < matrixSize; i++) {
-        matrix.push([])
-        for (j = 0; j < matrixSize; j++) {
-            matrix[i].push(0)
-
-        }
-    }
-
-
-    for (let i = 0; i < grass; i++) {
-
-        var x = Math.floor(Math.random() * matrixSize)
-        var y = Math.floor(Math.random() * matrixSize)
-
-        if (matrix[y][x] == 0) {
-            
-            matrix[y][x] = 1 
-        }
-
-    }
-
-    for (let i = 0; i < grassEater; i++) {
-
-        var x = Math.floor(Math.random() * matrixSize)
-        var y = Math.floor(Math.random() * matrixSize)
-
-        if (matrix[y][x] == 0) {
-            
-            matrix[y][x] = 2
-        }
-
-    }
-    for (let i = 0; i < empty; i++) {
-
-        var x = Math.floor(Math.random() * matrixSize)
-        var y = Math.floor(Math.random() * matrixSize)
-
-        if (matrix[y][x] == 0) {
-            
-            matrix[y][x] = 10
-        }
-
-    }
-
-
-    for (let i = 0; i < predator; i++) {
-
-        var x = Math.floor(Math.random() * matrixSize)
-        var y = Math.floor(Math.random() * matrixSize)
-
-        if (matrix[y][x] == 0) {
-            
-            matrix[y][x] = 3
-        }
-
-    }
-
-    for (let i = 0; i < ball; i++) {
-
-        var x = Math.floor(Math.random() * matrixSize)
-        var y = Math.floor(Math.random() * matrixSize)
-
-        if (matrix[y][x] == 0) {
-            
-            matrix[y][x] = 4
-        }
-
-
-    }
-
-
-
-
-    for (let i = 0; i < wall; i++) {
-
-        var x = Math.floor(Math.random() * matrixSize)
-        var y = Math.floor(Math.random() * matrixSize)
-
-        if (matrix[y][x] == 0) {
-            
-            matrix[y][x] = 5
-        }
-
-
-    }
-
-
-    for (let i = 0; i < player; i++) {
-
-        var x = Math.floor(Math.random() * matrixSize)
-        var y = Math.floor(Math.random() * matrixSize)
-
-        if (matrix[y][x] == 0) {
-            
-            matrix[y][x] = 6
-        }
-
-    }
-    
-
-    // for (let i = 0; i < matrixSize; i++) {
-    //     for (let j = 0; j < matrixSize; j++) {
-
-    //         if (i == j || i + j == matrix.length > 1) {
-    //             matrix[i][j] = 9
-    //         }
-    //     }
-
-    // }
-    for (let i = 0; i < divader; i++) {
-
-        var x = Math.floor(Math.random() * matrixSize)
-        var y = Math.floor(Math.random() * matrixSize)
-        if (matrix[y][x] == 0) {
-            
-            matrix[y][x] = 7
-        }
-
-
-    }
-
-    for (let i = 0; i < eaterHelper; i++) {
-
-        var x = Math.floor(Math.random() * matrixSize)
-        var y = Math.floor(Math.random() * matrixSize)
-
-        if (matrix[y][x] == 0) {
-            
-            matrix[y][x] = 8
-        }
-
-
-    }
-
-    for (let i = 0; i < meteor; i++) {
-
-        var x = Math.floor(Math.random() * matrixSize)
-        var y = Math.floor(Math.random() * matrixSize)
-
-        matrix[y][x] = 9
-
-    }
-    // for (let i = 0; i < Police; i++) {
-
-    //     var x = Math.floor(Math.random() * matrixSize)
-    //     var y = Math.floor(Math.random() * matrixSize)
-
-    //     matrix[y][x] = 11
-
-    // }
-
-
-    return matrix
-
-
-}
-
-
-
-
-
-var matrix = matrixGenerator(30,30,15,25,2,6,21,20,24,25,46)
 var side = 35
 
 
-var grassArr = []
-var grassEaterArr = []
-var predatorArr = []
-var ballArr = []
-var wallArr = []
-var playerArr = []
-var divaderArr = []
-var EaterHelperArr = []
-var metiorArr = []
-var emptyArr = []
-
 function setup() {
     frameRate(7)
-    createCanvas(matrix[0].length * side, matrix.length * side)
+    createCanvas(30 * side,30 * side)
 
     for (let y = 0; y < matrix.length; y++) {
         for (let x = 0; x < matrix[y].length; x++) {
@@ -332,41 +157,19 @@ function  Reset(){
     window.location.reload()
 }
 
-function Kill(){
-    for (let y = 0; y < matrix.length; y++) {
-        for (let x = 0; x < matrix[y].length; x++){
-            matrix[x][y]== 0
-            Window.location.matrix[x][y]=0()            
-            break
-            }
-        
-            
-        }
-        
+function KillAll(){
+    socket.emit("killAll");
 }
 
-for (let i = 0; i < grassArr.length; i++) {
-    const grass = grassArr[i];
-    grass.mul();
+function AddGrass(){
+    socket.emit("addGrass");
+}
+function AddGrassEater(){
+    socket.emit("addGrassEater");
+}
+function AddPresator(){
+    socket.emit("AddPresator");
 }
 
-for (let i = 0; i < grassEaterArr.length; i++) {
-    const eater = grassEaterArr[i];
-    eater.eat();
-}
-for (let i = 0; i < predatorArr.length; i++) {
-    const eater = predatorArr[i];
-    eater.eat();
-}
-// if (grassArr == 0 && grassEaterArr == 0){
-//     function Kill(){
-//         Window.matrix.wall.Kill()
-//     }
-// }
-// if (matrixGenerator= grassArr){
-
-// Window.location.reload()
 
 
-
-// }
