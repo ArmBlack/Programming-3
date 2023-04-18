@@ -4,16 +4,7 @@ var app = express()
 var server = require("http").Server(app)
 var io = require("socket.io")(server)
 var fs = require("fs")
-const Ball = require("./class/ball")
-const Divader = require("./class/divader")
-const EaterHelper = require("./class/EaterHelper")
-const Empty = require("./class/empty")
-const Grass = require("./class/grass")
-const GrassEater = require("./class/grassEater")
-const Meteor = require("./class/meteor")
-const Player = require("./class/player")
-const Predator = require("./class/predator")
-const Wall = require("./class/wall")
+
 
 app.use(express.static("."))
 
@@ -21,7 +12,7 @@ app.get("/",function(req,res){
     res.redirect("index.html")
 })
 server.listen(3000,function(){
-    console("Run")
+    console.log("Run")
 
 })
 
@@ -211,3 +202,40 @@ Divader = require("./class/divader")
 EaterHelper = require("./class/EaterHelper")
 Meteor = require("./class/meteor")
 Empty = require("./class/empty")
+
+function createObject(){
+    for (let y = 0; y < matrix.length; y++) {
+        for (let x = 0; x < matrix[y].length; x++) {
+
+            if (matrix[y][x] == 1) {
+                var gr = new Grass(x, y)
+                grassArr.push(gr)
+            } else if (matrix[y][x] == 2) {
+                var grEat = new GrassEater(x, y)
+                grassEaterArr.push(grEat)
+            } else if (matrix[y][x] == 3) {
+                var pred = new Predator(x, y)
+                predatorArr.push(pred)
+            } else if (matrix[y][x] == 4) {
+                var ba = new Ball(x, y)
+                ballArr.push(ba)
+            } else if (matrix[y][x] == 5) {
+                var wall = new Wall(x, y)
+                wallArr.push(wall)
+            } else if (matrix[y][x] == 6) {
+                var play = new Player(x, y)
+                playerArr.push(play)
+            } else if (matrix[y][x] == 7) {
+                var  div = new Divader(x, y)
+                divaderArr.push(div)
+            } else if (matrix[y][x] == 8) {
+                var  help= new EaterHelper(x, y)
+                EaterHelperArr.push(help)
+            }else if (matrix[y][x] == 10) {
+                var  help= new Empty(x, y)
+                emptyArr.push(help)
+            }
+        }
+    }
+}
+io.sockets.emit("Send Marix",matrix)

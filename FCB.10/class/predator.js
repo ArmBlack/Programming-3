@@ -20,7 +20,7 @@ module.exports=class Predator extends LivingCreature{
             [this.x + 1, this.y + 1]
         ];
     }
-    chooseCell(char, char1,char2,char3) {
+    chooseCell(char, char1) {
         this.getNewCoordinates();
         let found = [];
 
@@ -39,16 +39,7 @@ module.exports=class Predator extends LivingCreature{
                     found.push(this.directions[i]);
                 }
             }
-            if (y < matrix.length && y >= 0 && x < matrix[0].length && x >= 0) {
-                if (matrix[y][x] == char2) {
-                    found.push(this.directions[i]);
-                }
-            }
-            if (y < matrix.length && y >= 0 && x < matrix[0].length && x >= 0) {
-                if (matrix[y][x] == char3) {
-                    found.push(this.directions[i]);
-                }
-            }
+           
             
             
 
@@ -97,18 +88,13 @@ module.exports=class Predator extends LivingCreature{
                     break;
                 }
             }
-            for (let i = 0; i < ballArr.length; i++) {
-                if (ballArr[i].x == newX && ballArr[i].y == newY) {
-                    ballArr.splice(i, 1)
-          
-                }
             
           
              
               this.die()
               this.x = newX;
               this.y = newY;    
-                    break;
+                 
               
         }
         matrix[newY][newX] = 3;
@@ -120,10 +106,10 @@ module.exports=class Predator extends LivingCreature{
         if (this.energy > 10) {
             this.mul()
         }
-    }else {
+    else {
         this.move()
     }
-    }
+}
 
     move() {
         let emptyCell = this.chooseCell(0);
