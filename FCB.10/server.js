@@ -181,16 +181,16 @@ matrix = matrixGenerator(30,30,15,25,2,6,21,20,24,25,46)
 io.sockets.emit("send matrix", matrix)
 
 
-var grassArr = []
-var grassEaterArr = []
-var predatorArr = []
-var ballArr = []
-var wallArr = []
-var playerArr = []
-var divaderArr = []
-var EaterHelperArr = []
-var metiorArr = []
-var emptyArr = []
+grassArr = []
+grassEaterArr = []
+predatorArr = []
+ballArr = []
+wallArr = []
+playerArr = []
+divaderArr = []
+EaterHelperArr = []
+metiorArr = []
+emptyArr = []
 
 Grass = require("./class/grass")
 GrassEater = require("./class/grassEater")
@@ -231,11 +231,102 @@ function createObject(){
             } else if (matrix[y][x] == 8) {
                 var  help= new EaterHelper(x, y)
                 EaterHelperArr.push(help)
+            }else if (matrix[y][x] == 9) {
+                var  help= new Meteor(x, y)
+                metiorArr.push(help)
             }else if (matrix[y][x] == 10) {
                 var  help= new Empty(x, y)
                 emptyArr.push(help)
             }
         }
     }
+    io.sockets.emit("send matrix",matrix)
 }
-io.sockets.emit("Send Marix",matrix)
+
+
+io.on("connection",function (){
+    createObject()
+})
+
+
+
+function game(){
+    for (let i in grassArr) {
+        grassArr[i].mul()
+    }
+
+    for (let i in grassEaterArr) {
+        grassEaterArr[i].eat()
+
+    }
+
+
+
+    for (let i in predatorArr) {
+        predatorArr[i].eat()
+    }
+
+
+    for (let f in ballArr) {
+        ballArr[f].eat()
+    }
+
+
+    for (let i in playerArr) {
+        playerArr[i].eat()
+    }
+    for (let i in wallArr) {
+        wallArr[i]
+    }
+    for (let i in divaderArr) {
+        divaderArr[i].move()
+    }
+    for (let i in EaterHelperArr) {
+        EaterHelperArr[i].move()
+    }
+    for (let i in metiorArr) {
+        metiorArr[i].move()
+    }
+    io.sockets.emit("send matrix",matrix)
+}
+
+setInterval(game,200)
+
+var statistics = {}
+
+setInterval(function(){
+ statistics.grass = grassArr.length
+ statistics.grassEater = grassEaterArr.length;
+ statistics.predator = predatorArr.length;
+ statistics.ball = ballArr.length;
+ statistics.wall = wallArr.length;
+ statistics.player = playerArr.length;
+ statistics.divader = divaderArr.length;
+ statistics.EaterHelper = EaterHelperArr.length;
+ statistics.metior = metiorArr.length;
+ statistics.empty = emptyArr.length;
+
+  fs.writeFile("statistics.json",JSON.stringify(statistics),function(){
+
+  })
+},1000)
+
+
+// function KillAll() {
+//     grassArr = []
+//     grassEaterArr = []
+//     predatorArr = []
+//     ballArr = []
+//     wallArr = []
+//     playerArr = []
+//     divaderArr = []
+//     EaterHelperArr = []
+//     metiorArr = []
+    
+//     for (var y = 0; y < matrix.length; y++) {
+//         for (var x = 0; x < matrix[y].length; x++) {
+//             matrix[y][x] = 0;
+//         }
+//     }
+//     io.sockets.emit("send matrix",matrix)
+// }

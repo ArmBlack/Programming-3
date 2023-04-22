@@ -45,7 +45,7 @@ module.exports=class Player extends LivingCreature{
     //բազմանալ
     mul() {
         let emptyCell = this.chooseCell(0);
-        let newCell = emptyCell[Math.floor(Math.random()*emptyCell)]
+        let newCell = emptyCell[Math.floor(Math.random()*emptyCell.length)]
 
         if (newCell && this.energy > 5) {
             let newX = newCell[0];
@@ -62,8 +62,8 @@ module.exports=class Player extends LivingCreature{
 
     //ուտել
     eat() {
-        let emptyCell = this.chooseCell(3,5);
-        let newCell = random(emptyCell)
+        let emptyCell = this.chooseCell(3,4);
+        let newCell = emptyCell[Math.floor(Math.random()*emptyCell.length)]
 
         if (newCell) {
             this.energy += 5;
@@ -76,24 +76,14 @@ module.exports=class Player extends LivingCreature{
                     break;
                 }
             }
-            for (let i = 0; i < predatorArr.length; i++) {
-                if (predatorArr[i].x == newX && predatorArr[i].y == newY) {
-                    predatorArr.splice(i, 1)
-                    break;
-                }
-            }
+            
             for (let i = 0; i < ballArr.length; i++) {
                 if (ballArr[i].x == newX && ballArr[i].y == newY) {
                 ballArr.splice(i, 1)
                     break;
                 }    
             }
-            for (let i = 0; i < grassArr.length; i++) {
-                if (grassArr[i].x == newX && grassArr[i].y == newY) {
-                grassArr.splice(i, 1)
-                    break;
-                }    
-            }
+            
             
             matrix[newY][newX] = 6;
             matrix[this.y][this.x] = 0;
@@ -117,7 +107,7 @@ module.exports=class Player extends LivingCreature{
     //քայլել
     move() {
         let emptyCell = this.chooseCell(0);
-        let newCell = random(emptyCell)
+        let newCell = emptyCell[Math.floor(Math.random()*emptyCell.length)]
 
         if (newCell) {
             let newX = newCell[0];

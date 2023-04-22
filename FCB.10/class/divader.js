@@ -55,30 +55,22 @@ module.exports=class Divader extends LivingCreature{
     
 
     eat(){
-        let emptyCell = this.chooseCell(1, 2,5,6 );
-        let newCell = emptyCell[Math.floor(Math.random()*emptyCell)]
+        let emptyCell = this.chooseCell(2,5);
+        let newCell = emptyCell[Math.floor(Math.random()*emptyCell.length)]
 
         if (newCell) {
             this.energy += 5;
             let newX = newCell[0];
             let newY = newCell[1];
 
-            for (let i = 0; i < grassArr.length; i++) {
-                if (grassArr[i].x == newX && grassArr[i].y == newY) {
-                    grassArr.splice(i, 1)
-                    break;
-                }
-            }
-
+            
             for (let i = 0; i < grassEaterArr.length; i++) {
                 if (grassEaterArr[i].x == newX && grassEaterArr[i].y == newY) {
                     grassEaterArr.splice(i, 1)
                     break;
                 }
             }
-            for (let i = 0; i < predatorArr.length; i++) {
-                if (predatorArr[i].x == newX && predatorArr[i].y == newY) {
-                    predatorArr.splice(i, 1)
+            
           
             for (let i = 0; i < wallArr.length; i++) {
                 if (wallArr[i].x == newX && wallArr[i].y == newY) {
@@ -92,7 +84,7 @@ module.exports=class Divader extends LivingCreature{
             }
             
            
-         }
+         
 
             matrix[newY][newX] = 7;
             matrix[this.y][this.x] = 0;
@@ -104,11 +96,11 @@ module.exports=class Divader extends LivingCreature{
                 this.mul()
             }else {
             this.move()
-    }}}
+    }}
     }
     move() {
         let emptyCell = this.chooseCell(0);
-        let newCell = random(emptyCell)
+        let newCell = emptyCell[Math.floor(Math.random()*emptyCell.length)]
 
         if (newCell) {
             let newX = newCell[0];

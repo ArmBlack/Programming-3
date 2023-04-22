@@ -18,7 +18,7 @@ module.exports=class EaterHelper extends LivingCreature{
             [this.x + 1, this.y + 1]
         ];
     }
-    chooseCell(char,char1) {
+    chooseCell(char) {
         this.getNewCoordinates();
         let found = [];
 
@@ -31,11 +31,7 @@ module.exports=class EaterHelper extends LivingCreature{
                     found.push(this.directions[i]);
                 }
             }
-            if (y < matrix.length && y >= 0 && x < matrix[0].length && x >= 0) {
-                if (matrix[y][x] == char1) {
-                    found.push(this.directions[i]);
-                }
-            }
+            
 
 
 
@@ -63,8 +59,8 @@ module.exports=class EaterHelper extends LivingCreature{
 
     //ուտել
     eat() {
-        let emptyCell = this.chooseCell(1,6);
-        let newCell = random(emptyCell)
+        let emptyCell = this.chooseCell(1);
+        let newCell = emptyCell[Math.floor(Math.random()*emptyCell.length)]
 
         if (newCell) {
             this.energy += 10;
@@ -99,8 +95,7 @@ module.exports=class EaterHelper extends LivingCreature{
     //քայլել
     move() {
         let emptyCell = this.chooseCell(0);
-        let newCell = random(emptyCell)
-
+        let newCell = emptyCell[Math.floor(Math.random()*emptyCell.length)]
         if (newCell) {
             let newX = newCell[0];
             let newY = newCell[1];

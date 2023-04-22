@@ -45,7 +45,7 @@ module.exports=class Ball extends LivingCreature{
 
     mul() {
         let emptyCell = this.chooseCell(0);
-        let newCell = emptyCell[Math.floor(Math.random()*emptyCell)]
+        let newCell = emptyCell[Math.floor(Math.random()*emptyCell.length)]
         if (newCell && this.energy > 20) {
             let newX = newCell[0];
             let newY = newCell[1];
@@ -60,27 +60,14 @@ module.exports=class Ball extends LivingCreature{
 
 
     eat() {
-        let emptyCell = this.chooseCell(1, 2,3 );
-        let newCell = random(emptyCell)
-
+        let emptyCell = this.chooseCell(3 );
+        let newCell = emptyCell[Math.floor(Math.random()*emptyCell.length)]
         if (newCell) {
             this.energy += 5;
             let newX = newCell[0];
             let newY = newCell[1];
 
-            for (let i = 0; i < grassArr.length; i++) {
-                if (grassArr[i].x == newX && grassArr[i].y == newY) {
-                    grassArr.splice(i, 1)
-                    break;
-                }
-            }
-
-            for (let i = 0; i < grassEaterArr.length; i++) {
-                if (grassEaterArr[i].x == newX && grassEaterArr[i].y == newY) {
-                    grassEaterArr.splice(i, 1)
-                    break;
-                }
-            }
+            
             for (let i = 0; i < predatorArr.length; i++) {
                 if (predatorArr[i].x == newX && predatorArr[i].y == newY) {
                     predatorArr.splice(i, 1)
@@ -116,8 +103,7 @@ module.exports=class Ball extends LivingCreature{
 
     move() {
         let emptyCell = this.chooseCell(0);
-        let newCell = random(emptyCell)
-
+        let newCell = emptyCell[Math.floor(Math.random()*emptyCell.length)]
         if (newCell) {
             let newX = newCell[0];
             let newY = newCell[1];

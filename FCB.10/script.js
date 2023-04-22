@@ -10,7 +10,7 @@ function setup() {
     
 }
 
-function draws() {
+function draws(matrix) {
 
     for (let y = 0; y < matrix.length; y++) {
         for (let x = 0; x < matrix[y].length; x++) {
@@ -73,42 +73,7 @@ function draws() {
 
     }
 
-    // for (let i in grassArr) {
-    //     grassArr[i].mul()
-    // }
-
-    // for (let i in grassEaterArr) {
-    //     grassEaterArr[i].eat()
-
-    // }
-
-
-
-    // for (let i in predatorArr) {
-    //     predatorArr[i].eat()
-    // }
-
-
-    // for (let f in ballArr) {
-    //     ballArr[f].eat()
-    // }
-
-
-    // for (let i in playerArr) {
-    //     playerArr[i].eat()
-    // }
-    // for (let i in wallArr) {
-    //     wallArr[i]
-    // }
-    // for (let i in divaderArr) {
-    //     divaderArr[i].move()
-    // }
-    // for (let i in EaterHelperArr) {
-    //     EaterHelperArr[i].move()
-    // }
-    // for (let i in metiorArr) {
-    //     metiorArr[i].move()
-    // }
+    
 
    
 
@@ -117,20 +82,20 @@ function  Reset(){
     window.location.reload()
 }
 
-function KillAll(){
-    socket.emit("killAll");
-}
+// function KillAll(){
+//     socket.emit("killAll");
+// }
 
-function AddGrass(){
-    socket.emit("addGrass");
-}
-function AddGrassEater(){
-    socket.emit("addGrassEater");
-}
-function AddPresator(){
-    socket.emit("AddPresator");
-}
+// function AddGrass(){
+//     socket.emit("addGrass");
+// }
+// function AddGrassEater(){
+//     socket.emit("addGrassEater");
+// }
+// function AddPresator(){
+//     socket.emit("AddPresator");
+// }
 
 
 
-socket.on("send Matrix",draws)
+socket.on("send matrix",draws)

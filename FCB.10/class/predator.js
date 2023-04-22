@@ -51,7 +51,7 @@ module.exports=class Predator extends LivingCreature{
 
     mul() {
         let emptyCell = this.chooseCell(0);
-        let newCell = emptyCell[Math.floor(Math.random()*emptyCell)]
+        let newCell = emptyCell[Math.floor(Math.random()*emptyCell.length)]
 
         if (newCell && this.energy > 5) {
             let newX = newCell[0];
@@ -67,9 +67,8 @@ module.exports=class Predator extends LivingCreature{
 
 
     eat() {
-        let emptyCell = this.chooseCell(1, 2,5,6 );
-        let newCell = random(emptyCell)
-
+        let emptyCell = this.chooseCell(1, 2);
+        let newCell = emptyCell[Math.floor(Math.random()*emptyCell.length)]
         if (newCell) {
             this.energy += 5;
             let newX = newCell[0];
@@ -91,31 +90,29 @@ module.exports=class Predator extends LivingCreature{
             
           
              
-              this.die()
+         
+              matrix[newY][newX] = 3;
+              matrix[this.y][this.x] = 0;
+      
               this.x = newX;
-              this.y = newY;    
-                 
-              
-        }
-        matrix[newY][newX] = 3;
-        matrix[this.y][this.x] = 0;
-
-        this.x = newX;
-        this.y = newY;
-
-        if (this.energy > 10) {
-            this.mul()
-        }
-    else {
-        this.move()
-    }
+              this.y = newY;
+              if (this.energy > 30) {
+                this.mul()
+            }
+        }else {
+            this.move()
+            }
+ 
+        
+   
 }
 
     move() {
         let emptyCell = this.chooseCell(0);
-        let newCell = random(emptyCell)
+        let newCell = emptyCell[Math.floor(Math.random()*emptyCell.length)]
 
         if (newCell) {
+    
             let newX = newCell[0];
             let newY = newCell[1];
 
