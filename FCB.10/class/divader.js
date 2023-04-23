@@ -27,7 +27,7 @@ module.exports=class Divader extends LivingCreature{
             [this.x + 1, this.y + 1]
         ];
     }
-    chooseCell(char,char1) {
+    chooseCell(char,char1,char2) {
         this.getNewCoordinates();
         let found = [];
 
@@ -45,6 +45,11 @@ module.exports=class Divader extends LivingCreature{
                     found.push(this.directions[i]);
                 }
             }
+            if (y < matrix.length && y >= 0 && x < matrix[0].length && x >= 0) {
+                if (matrix[y][x] == char2) {
+                    found.push(this.directions[i]);
+                }
+            }
 
 
 
@@ -55,7 +60,7 @@ module.exports=class Divader extends LivingCreature{
     
 
     eat(){
-        let emptyCell = this.chooseCell(2,5);
+        let emptyCell = this.chooseCell(1,5,9);
         let newCell = emptyCell[Math.floor(Math.random()*emptyCell.length)]
 
         if (newCell) {
@@ -64,9 +69,9 @@ module.exports=class Divader extends LivingCreature{
             let newY = newCell[1];
 
             
-            for (let i = 0; i < grassEaterArr.length; i++) {
-                if (grassEaterArr[i].x == newX && grassEaterArr[i].y == newY) {
-                    grassEaterArr.splice(i, 1)
+            for (let i = 0; i < grassArr.length; i++) {
+                if (grassArr[i].x == newX && grassArr[i].y == newY) {
+                    grassArr.splice(i, 1)
                     break;
                 }
             }
@@ -76,7 +81,13 @@ module.exports=class Divader extends LivingCreature{
                 if (wallArr[i].x == newX && wallArr[i].y == newY) {
                     wallrArr.splice(i, 1)
                 }
-              this.die()
+            
+                for (let i = 0; i < mrtiorArr.length; i++) {
+                    if (mrtiorArr[i].x == newX && mrtiorArr[i].y == newY) {
+                        mrtiorrArr.splice(i, 1)
+                    }
+                }
+              
               this.x = newX;
               this.y = newY;    
                     break;
