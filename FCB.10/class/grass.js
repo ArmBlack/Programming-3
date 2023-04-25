@@ -23,7 +23,7 @@ module.exports = class Grass extends LivingCreature{
 
                     var gr = new Grass(newX, newY)
                     grassArr.push(gr)
-                    this.multiply = 1
+                    this.multiply = 5
                     
             }
     }

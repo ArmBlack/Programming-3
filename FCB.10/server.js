@@ -8,9 +8,14 @@ var fs = require("fs")
 
 app.use(express.static("."))
 
+
+// app.get("/",function(req,res){
+//     res.redirect("start.html")
+// })
 app.get("/",function(req,res){
     res.redirect("index.html")
 })
+
 server.listen(3000,function(){
     console.log("Run")
 
@@ -310,7 +315,9 @@ setInterval(function(){
 
   })
 },1000)
-
+// function Reset(){
+// window.location.Restart()
+// }
 
 // function KillAll() {
 //     grassArr = []

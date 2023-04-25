@@ -4,6 +4,47 @@
     
     <style>
     
+h1{
+    width: 100%;
+    /* margin: 0 auto; */
+    color: #484848;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: monospace;
+    letter-spacing: 7px;
+    cursor: pointer
+}
+h1 span{
+    transition: .4s linear
+}
+h1:hover span:nth-child(1){
+    margin-right: 5px
+}
+h1:hover span:nth-child(1):after{
+    content: "";
+}
+h1:hover span:nth-child(2){
+    margin-left: 50px
+}
+h1:hover span{
+    color: rgb(255, 0, 0);
+    text-shadow: 0 0 10px rgb(255, 0, 0),
+    0 0 20px rgb(255, 0, 0),
+    0 0 40px rgb(255, 0, 0);
+}
+canvas {
+    display: block;
+    margin: 0 auto;
+    /* padding: 100px 0; */
+    box-shadow: 0 0 45px 0 rgba(255, 255, 255, 0.2);
+}
+
+h1 {
+    animation: my--anim 2s linear 2s infinite alternate;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Yellowtail', cursive;
+}
    .button {
      background-color: #000000; /* Green */
      border: none;
@@ -15,8 +56,8 @@
      font-size: 15px;
      margin: 4px 2px;
      cursor: pointer;
-
-     
+     font-family: monospace;
+   
     }
    
   
@@ -73,7 +114,7 @@
 
 
         body{
-            background-size: cover;
+            background-size: contain;
         background-image: url("img/giphy.gif");
          
         }
@@ -103,13 +144,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FCB.10</title>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
-    <script src="script.js"></script>
+
 </head>
 <body>
-   <h1>䷧ Game Of Live   ䷧ </h1>
-   <h2>䷧ Arm_Black   ䷧ </h2>
+  <h1><span>Programming </span><span>III</span></h1>
+  <h1><span>䷧ Game Of </span><span>Live   ䷧</span></h1>
+<h1><span>䷧ Arm_Black   ䷧</span></h1>
+   <!-- <h1>䷧ Game Of Live   ䷧ </h1>
+   <h2>䷧ Arm_Black   ䷧ </h2> -->
    <a href="start.html"></a>
   
   
@@ -126,6 +168,19 @@
    <button class="button button4"  onclick="AddGrassEater()">ᴀᴅᴅ ɢʀᴀꜱꜱᴇᴀᴛᴇʀ</button>
    <button class="button button5"  onclick="AddPredator()">ᴀᴅᴅ ᴘʀᴇᴅᴀᴛᴏʀ</button>
 </div>
+<!-- <div class="all__btns">
+  <button onclick="AddGrass()" class="add__btn" style="background-color: green">Add Grass</button>
+  <button onclick="AddGrassEater()" class="add__btn" style="background-color: yellow; color: black">Add GrassEater</button>
+  <button onclick="AddGishatic()" class="add__btn" style="background-color: red">Add Gishatic</button>
+  <button onclick="AddHrashagorc()" class="add__btn" style="background-color: deepskyblue">Add Hrashagorc</button>
+  <button onclick="AddVorsord()" class="add__btn" style="background-color: black">Add Vorsord</button>
+  <button onclick="AddXotabuys()" class="add__btn" style="background-color: blue">Add Amp</button>
+  <button onclick="KillAll()" class="add__btn" style="background-color: white; color: black">Kill all</button>
+
+</div> -->
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
+<script src="script.js"></script>
 </body>
 
 </html>

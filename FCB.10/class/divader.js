@@ -72,7 +72,7 @@ module.exports=class Divader extends LivingCreature{
             for (let i = 0; i < grassArr.length; i++) {
                 if (grassArr[i].x == newX && grassArr[i].y == newY) {
                     grassArr.splice(i, 1)
-                    break;
+                    
                 }
             }
             
@@ -82,9 +82,9 @@ module.exports=class Divader extends LivingCreature{
                     wallrArr.splice(i, 1)
                 }
             
-                for (let i = 0; i < mrtiorArr.length; i++) {
-                    if (mrtiorArr[i].x == newX && mrtiorArr[i].y == newY) {
-                        mrtiorrArr.splice(i, 1)
+                for (let i = 0; i < metiorArr.length; i++) {
+                    if (metiorArr[i].x == newX && metiorArr[i].y == newY) {
+                        metiorrArr.splice(i, 1)
                     }
                 }
               
@@ -133,9 +133,9 @@ module.exports=class Divader extends LivingCreature{
     }
    
     die(){
-        for (let i = 0; i < wallArr.length; i++) {
-            if (wallArr[i].x == this.x && wallArr[i].y == this.y) {
-                wallArr.splice(i, 1)
+        for (let i = 0; i < divaderArr.length; i++) {
+            if (divaderArr[i].x == this.x && divaderArr[i].y == this.y) {
+                divaderArr.splice(i, 1)
             }
         }
         matrix[this.y][this.x] = 0;
