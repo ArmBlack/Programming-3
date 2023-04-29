@@ -6,6 +6,7 @@ var io = require("socket.io")(server)
 var fs = require("fs")
 
 
+
 app.use(express.static("."))
 
 
@@ -239,22 +240,98 @@ function createObject(){
             }else if (matrix[y][x] == 9) {
                 var  help= new Meteor(x, y)
                 metiorArr.push(help)
-            }else if (matrix[y][x] == 10) {
-                var  help= new Empty(x, y)
-                emptyArr.push(help)
-            }
+             }
         }
     }
     io.sockets.emit("send matrix",matrix)
 }
 
+function AddGrass(){
+    for(let i = 0; i < 5 ;i++){
 
-io.on("connection",function (){
+        var x = Math.floor(Math.random() * matrix.length)
+        var y = Math.floor(Math.random() * matrix.length)
+
+               matrix[y][x] = 1
+
+               var gr = new Grass(x,y)
+
+               grassArr.push(gr)
+
+
+    }
+}
+
+io.on("connection",function (socket){
     createObject()
+    socket.on("addGrass",AddGrass)
 })
 
+function AddGrassEater(){
+    for(let i = 0; i < 3 ;i++){
+
+        var x = Math.floor(Math.random() * matrix.length)
+        var y = Math.floor(Math.random() * matrix.length)
+
+               matrix[y][x] = 2 
+               matrix[y][x] = 8
+
+               var gr = new GrassEater(x,y)
+
+               grassEaterArr.push(gr)
+            
+               var grh = new EaterHelper
+
+               EaterHelperArr.push(grh)
+
+    }
+}
+function AddEaterHelper(){
+    for(let i = 0; i < 3 ;i++){
+
+        var x = Math.floor(Math.random() * matrix.length)
+        var y = Math.floor(Math.random() * matrix.length)
+
+               
+               matrix[y][x] = 8
+
+               
+            
+               var grh = new EaterHelper
+
+               EaterHelperArr.push(grh)
+
+    }
+}
+function AddPredator(){
+    for(let i = 0; i < 3 ;i++){
+
+        var x = Math.floor(Math.random() * matrix.length)
+        var y = Math.floor(Math.random() * matrix.length)
+
+               matrix[y][x] = 3
+
+               var gr = new Predator(x,y)
+
+               predatorArr.push(gr)
 
 
+    }
+}
+
+io.on("connection",function (socket){
+    createObject()
+    socket.on("AddPredator",AddPredator)
+})
+
+io.on("connection",function (socket){
+    createObject()
+    socket.on("addGrassEater",AddGrassEater)
+})
+io.on("connection",function (socket){
+    createObject()
+    socket.on("addEaterHelper",AddEaterHelper)
+})
 function game(){
     for (let i in grassArr) {
         grassArr[i].mul()
@@ -297,43 +374,55 @@ function game(){
 
 setInterval(game,200)
 
-var statistics = {}
 
-setInterval(function(){
- statistics.grass = grassArr.length
- statistics.grassEater = grassEaterArr.length;
- statistics.predator = predatorArr.length;
- statistics.ball = ballArr.length;
- statistics.wall = wallArr.length;
- statistics.player = playerArr.length;
- statistics.divader = divaderArr.length;
- statistics.EaterHelper = EaterHelperArr.length;
- statistics.metior = metiorArr.length;
- statistics.empty = emptyArr.length;
 
-  fs.writeFile("statistics.json",JSON.stringify(statistics),function(){
-
-  })
-},1000)
 // function Reset(){
 // window.location.Restart()
 // }
 
-// function KillAll() {
-//     grassArr = []
-//     grassEaterArr = []
-//     predatorArr = []
-//     ballArr = []
-//     wallArr = []
-//     playerArr = []
-//     divaderArr = []
-//     EaterHelperArr = []
-//     metiorArr = []
+function KillAll() {
+    grassArr = []
+    grassEaterArr = []
+    predatorArr = []
+    ballArr = []
     
-//     for (var y = 0; y < matrix.length; y++) {
-//         for (var x = 0; x < matrix[y].length; x++) {
-//             matrix[y][x] = 0;
-//         }
-//     }
-//     io.sockets.emit("send matrix",matrix)
-// }
+    playerArr = []
+    divaderArr = []
+    EaterHelperArr = []
+
+    
+    
+    
+    
+    for (var y = 0; y < matrix.length; y++) {
+        for (var x = 0; x < matrix[y].length; x++) {
+            matrix[y][x] = 0;
+        }
+    }
+    io.sockets.emit("send matrix",matrix)
+}
+
+io.on("connection",function (socket){
+    createObject()
+    socket.on("killAll",KillAll)
+})
+
+
+var statistics = {}
+
+setInterval(function(){
+    statistics.grass = grassArr.length
+    statistics.grassEater = grassEaterArr.length;
+    statistics.predator = predatorArr.length;
+    statistics.ball = ballArr.length;
+    statistics.wall = wallArr.length;
+    statistics.player = playerArr.length;
+    statistics.divader = divaderArr.length;
+    statistics.EaterHelper = EaterHelperArr.length;
+    statistics.metior = metiorArr.length;
+    statistics.empty = emptyArr.length;
+   
+     fs.writeFile("statistics.json",JSON.stringify(statistics),function(){
+   
+     })
+   },1000)

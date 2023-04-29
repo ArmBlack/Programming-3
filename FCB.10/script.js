@@ -82,19 +82,22 @@ function  Reset(){
     window.location.reload()
 }
 
-// function KillAll(){
-//     socket.emit("killAll");
-// }
+function KillAll(){
+    socket.emit("killAll");
+}
 
-// function AddGrass(){
-//     socket.emit("addGrass");
-// }
-// function AddGrassEater(){
-//     socket.emit("addGrassEater");
-// }
-// function AddPresator(){
-//     socket.emit("AddPresator");
-// }
+function AddGrass(){
+    socket.emit("addGrass");
+}
+function AddGrassEater(){
+    socket.emit("addGrassEater");
+}
+function AddPredator(){
+    socket.emit("AddPredator");
+}
+function AddEaterHelper(){
+    socket.emit("AddEaterHelper");
+}
 
 
 

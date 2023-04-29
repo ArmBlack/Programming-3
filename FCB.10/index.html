@@ -54,7 +54,7 @@ h1 {
      text-decoration: none;
      display: inline-block;
      font-size: 15px;
-     margin: 4px 2px;
+     margin: 5px 2px;
      cursor: pointer;
      font-family: monospace;
    
@@ -78,33 +78,39 @@ h1 {
 .button3 {border-radius: 20px;}
 .button4 {border-radius: 20px;}
 .button5 {border-radius: 20px;}
+.button6 {border-radius: 20px;}
 .button1 {
-  background-color: rgba(0, 0, 0, 0.382);
-  color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0.645);
+  color: rgb(0, 0, 0);
   border: 2px solid #ffffff; /* Green */
 }
 .button2 {
-  background-color: rgba(0, 0, 0, 0.382);
-  color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0.645);
+  color: rgb(0, 0, 0);
   border: 2px solid #ffffff; /* Green */
 }
 .button3 {
-  background-color: rgba(0, 0, 0, 0.382);
-  color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0.645);
+  color: rgb(0, 0, 0);
   border: 2px solid #ffffff; /* Green */
 }
 .button4 {
-  background-color: rgba(0, 0, 0, 0.382);
-  color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0.645);
+  color: rgb(0, 0, 0);
   border: 2px solid #ffffff; /* Green */
 }
 .button5 {
-  background-color: rgba(0, 0, 0, 0.382);
-  color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0.646);
+  color: rgb(0, 0, 0);
+  border: 2px solid #ffffff; /* Green */
+}
+.button6 {
+  background-color: rgba(255, 255, 255, 0.646);
+  color: rgb(0, 0, 0);
   border: 2px solid #ffffff; /* Green */
 }
 .button {
-  transition-duration: 0.4s;
+  transition-duration: 4s;
 }
 
 .button:hover {
@@ -139,6 +145,18 @@ h1 {
             display: flex;
             justify-content: center;
             color:rgb(0, 0, 0)        }
+            .btn__exanak{
+    font-family: 'Merriweather Sans', sans-serif;
+    margin: 25px 100px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    padding: 12px 20px;
+    color: black;
+    display: block;
+    transition: all 0.3s;
+}
         </style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -147,9 +165,9 @@ h1 {
 
 </head>
 <body>
-  <h1><span>Programming </span><span>III</span></h1>
-  <h1><span>䷧ Game Of </span><span>Live   ䷧</span></h1>
-<h1><span>䷧ Arm_Black   ䷧</span></h1>
+  <h1><span>✞☠︎ Programming </span><span>III ☠︎✞</span></h1>
+  <h1><span>✞☠︎ Game Of </span><span>Live   ☠︎✞</span></h1>
+<h1><span>✞☠︎ Arm_Black ☠︎✞</span></h1>
    <!-- <h1>䷧ Game Of Live   ䷧ </h1>
    <h2>䷧ Arm_Black   ䷧ </h2> -->
    <a href="start.html"></a>
@@ -167,17 +185,17 @@ h1 {
    <button class="button button3"  onclick="AddGrass()">ᴀᴅᴅ ɢʀᴀꜱꜱ</button>
    <button class="button button4"  onclick="AddGrassEater()">ᴀᴅᴅ ɢʀᴀꜱꜱᴇᴀᴛᴇʀ</button>
    <button class="button button5"  onclick="AddPredator()">ᴀᴅᴅ ᴘʀᴇᴅᴀᴛᴏʀ</button>
-</div>
-<!-- <div class="all__btns">
-  <button onclick="AddGrass()" class="add__btn" style="background-color: green">Add Grass</button>
-  <button onclick="AddGrassEater()" class="add__btn" style="background-color: yellow; color: black">Add GrassEater</button>
-  <button onclick="AddGishatic()" class="add__btn" style="background-color: red">Add Gishatic</button>
-  <button onclick="AddHrashagorc()" class="add__btn" style="background-color: deepskyblue">Add Hrashagorc</button>
-  <button onclick="AddVorsord()" class="add__btn" style="background-color: black">Add Vorsord</button>
-  <button onclick="AddXotabuys()" class="add__btn" style="background-color: blue">Add Amp</button>
-  <button onclick="KillAll()" class="add__btn" style="background-color: white; color: black">Kill all</button>
+   <button class="button button6"  onclick="AddEaterHelper()">ᴀᴅᴅ ᴱᴬᵀᴱᴿᴴᴱᴸᴾᴱᴿ</button>
+   </div>
 
-</div> -->
+   <div class="btns">
+    <button onclick="Spring()" class="btn__exanak" style="background-color: darkgreen">Spring</button>
+    <button onclick="Summer()" class="btn__exanak" style="background-color: #79a83b">Summer</button>
+    <button onclick="Autumn()" class="btn__exanak" style="background-color: #ff8453">Autumn</button>
+    <button onclick="Winter()" class="btn__exanak" style="background-color: #ffffff">Winter</button>
+</div>
+
+
 <script src="/socket.io/socket.io.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
 <script src="script.js"></script>
