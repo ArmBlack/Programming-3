@@ -4,7 +4,6 @@ module.exports=class Ball extends LivingCreature{
     constructor(x, y) {
         super(x,y)
         this.energy = 10
-        this.directions = []
     }
 
 

@@ -1,15 +1,28 @@
 var socket = io()
 var side = 35
 
-
+socket.on('Winter',function (data){
+    weather = data
+})
+socket.on('Summer',function (data){
+    weather = data
+})
+socket.on('Spring',function (data){
+    weather = data
+})
+socket.on('Autumn',function (data){
+    weather = data
+})
 function setup() {
-    frameRate(7)
     createCanvas(30 * side,30 * side)
 
   
     
 }
-///dsssdadadwaq
+
+
+var weather = "winter"
+
 function draws(matrix) {
 
     for (let y = 0; y < matrix.length; y++) {
@@ -17,16 +30,46 @@ function draws(matrix) {
 
             var tobot = side - side * 0.1
             textSize(tobot)
-
+            // var weather = "spring"
 
             if (matrix[y][x] == 1) {
-                fill("green")
-                rect(x * side, y * side, side, side)
-                text("☘️", x * side, y * side + tobot)
+                if (weather == "spring") {
+                        fill("green");
+                        rect(x * side, y * side, side, side);
+                        text('🌿', x * side, y * side + tobot);
+                } else if (weather == "summer") {
+                        fill("darkgreen");
+                        rect(x * side, y * side, side, side);
+                        text('☘️', x * side, y * side + tobot);
+                } else if (weather == "autumn") {
+                        fill("yellow");
+                        rect(x * side, y * side, side, side);
+                        text('🍁', x * side, y * side + tobot);
+                } else if (weather == "winter") {
+                        fill("rgb(0, 123, 255)");
+                        rect(x * side, y * side, side, side);
+                        text('❄️', x * side, y * side + tobot);
+                }
             } else if (matrix[y][x] == 2) {
+                if (weather == "spring" ){
+                        fill("brown")
+                        rect(x * side, y * side, side, side);
+                        text('🐂', x * side, y * side + tobot);
+                }else if(weather == "summer"){
                 fill("yellow")
-                rect(x * side, y * side, side, side)
-                text("🐏", x * side, y * side + tobot)
+                rect(x * side, y * side, side, side);
+                text('🐑', x * side, y * side + tobot);
+          //     
+            }else if(weather == "autumn"){
+                fill("red")
+                rect(x * side, y * side, side, side);
+                text('🐏', x * side, y * side + tobot);
+                 
+            }else if (weather == "winter") {
+                        fill("#b1b4b5")
+                        rect(x * side, y * side, side, side);
+                        text('🐄', x * side, y * side + tobot);
+                }
             } else if (matrix[y][x] == 0) {
                 fill("gray")
                 rect(x * side, y * side, side, side)

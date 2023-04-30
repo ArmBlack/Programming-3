@@ -3,6 +3,101 @@
 <head>
     
     <style>
+      button.depth {
+    margin-bottom: 40px;
+    background: #444;
+    border: none;
+    border-radius: 80px;
+    box-shadow: inset 0 0 2px 2px hsla(0,0%,0%,.2),
+                inset 0 0 2px 4px hsla(0,0%,0%,.2),
+                inset 0 0 2px 6px hsla(0,0%,0%,.2),
+                inset 0 0 1px 8px hsla(0,0%,0%,.5),
+                inset 0 -4px 2px 4px hsla(0,0%,0%,.5),
+                inset 0 1px 1px 8px hsla(0,0%,100%,.25),
+                inset 0 -30px 30px hsla(0,0%,0%,.2),
+                0 -4px 8px 4px hsla(0,0%,0%,.5),
+                0 10px 10px hsla(0,0%,0%,.25),
+                0 0 2px 2px hsla(0,0%,0%,.2),
+                0 0 2px 4px hsla(0,0%,0%,.2),
+                0 0 2px 6px hsla(0,0%,0%,.2),
+                0 0 2px 8px hsla(0,0%,0%,.5),
+                0 1px 2px 8px hsla(0,0%,100%,.25),
+                0 -1px 2px 8px hsla(0,0%,0%,.5);
+    color: #303030;
+    cursor: pointer;
+    font: bold 27px/85px sans-serif;
+    height: 80px;
+    padding: 0;
+    text-shadow: 0 1px 1px hsla(0,0%,100%,.25),
+                 0 -1px 1px hsla(0,0%,0%,.75);
+    width: 270px;
+}
+
+button.depthsp:hover,
+button.depthsp:focus {
+    color: rgb(0, 123, 255);
+    text-shadow: 0 0 20px hsla(240,75%,75%,.5),
+                 0 1px 1px hsla(0,0%,100%,.25),
+                 0 -1px 1px hsla(0,0%,0%,.75);
+}
+
+button.depthsu:hover,
+button.depthsu:focus {
+    color: rgb(0, 149, 0);
+    text-shadow: 0 0 20px hsla(240,75%,75%,.5),
+                 0 1px 1px hsla(0,0%,100%,.25),
+                 0 -1px 1px hsla(0,0%,0%,.75);
+}
+
+button.depthau:hover,
+button.depthau:focus {
+    color: rgb(255, 183, 0);
+    text-shadow: 0 0 20px hsla(240,75%,75%,.5),
+                 0 1px 1px hsla(0,0%,100%,.25),
+                 0 -1px 1px hsla(0,0%,0%,.75);
+}
+
+button.depthwi:hover,
+button.depthwi:focus {
+    color: #0ab;
+    text-shadow: 0 0 20px hsla(240,75%,75%,.5),
+                 0 1px 1px hsla(0,0%,100%,.25),
+                 0 -1px 1px hsla(0,0%,0%,.75);
+}
+button.depth:active {
+    box-shadow: inset 0 0 2px 2px hsla(0,0%,0%,.2),
+                inset 0 0 2px 4px hsla(0,0%,0%,.2),
+                inset 0 0 2px 6px hsla(0,0%,0%,.2),
+                inset 0 0 1px 7px hsla(0,0%,0%,.5),
+                inset 0 5px 15px 7px hsla(0,0%,0%,.15),
+                inset 0 -4px 2px 3px hsla(0,0%,0%,.5),
+                inset 0 1px 1px 7px hsla(0,0%,100%,.25),
+                inset 0 -30px 30px hsla(0,0%,0%,.1),
+                inset 0 30px 30px hsla(0,0%,0%,.2),
+                0 -4px 8px 4px hsla(0,0%,0%,.5),
+                0 5px 10px hsla(0,0%,0%,.25),
+                0 0 2px 2px hsla(0,0%,0%,.2),
+                0 0 2px 4px hsla(0,0%,0%,.2),
+                0 0 2px 6px hsla(0,0%,0%,.2),
+                0 0 2px 8px hsla(0,0%,0%,.5),
+                0 1px 2px 8px hsla(0,0%,100%,.25),
+                0 -1px 2px 8px hsla(0,0%,0%,.5);
+    line-height: 86px;
+}
+
+.seasons{
+    position: absolute;
+    top: 75%;
+    display: inline-block;
+    width: 15%;
+}
+
+
+.diagram1{
+    position: absolute;
+    top: 80%;
+    left: 80%;
+}
     
 h1{
     width: 100%;
@@ -166,7 +261,7 @@ h1 {
 </head>
 <body>
   <h1><span>✞☠︎ Programming </span><span>III ☠︎✞</span></h1>
-  <h1><span>✞☠︎ Game Of </span><span>Live   ☠︎✞</span></h1>
+  <h1><span>✞☠︎ Game Of </span><span>Live ☠︎✞</span></h1>
 <h1><span>✞☠︎ Arm_Black ☠︎✞</span></h1>
    <!-- <h1>䷧ Game Of Live   ䷧ </h1>
    <h2>䷧ Arm_Black   ䷧ </h2> -->
@@ -185,15 +280,17 @@ h1 {
    <button class="button button3"  onclick="AddGrass()">ᴀᴅᴅ ɢʀᴀꜱꜱ</button>
    <button class="button button4"  onclick="AddGrassEater()">ᴀᴅᴅ ɢʀᴀꜱꜱᴇᴀᴛᴇʀ</button>
    <button class="button button5"  onclick="AddPredator()">ᴀᴅᴅ ᴘʀᴇᴅᴀᴛᴏʀ</button>
-   <button class="button button6"  onclick="AddEaterHelper()">ᴀᴅᴅ ᴇᴀᴛᴇʀʜᴇʟᴘᴇʀ</button>
+   <button class="button button6"  onclick="AddEaterHelper()" || onclick = "Reset()">ᴀᴅᴅ ᴇᴀᴛᴇʀʜᴇʟᴘᴇʀ</button>
    </div>
 
-   <div class="btns">
-    <button onclick="Spring()" class="btn__exanak" style="background-color: darkgreen">𝒮𝓅𝓇𝒾𝓃𝑔</button>
-    <button onclick="Summer()" class="btn__exanak" style="background-color: #d14307">𝒮𝓊𝓂𝓂𝑒𝓇</button>
-    <button onclick="Autumn()" class="btn__exanak" style="background-color: #79cc0c">𝒜𝓊𝓉𝓊𝓂𝓃</button>
-    <button onclick="Winter()" class="btn__exanak" style="background-color: #ffffff">𝒲𝒾𝓃𝓉𝑒𝓇</button>
-</div>
+   <div class="seasons">
+    <button onclick="Spring()" class="depthsp depth" type="button">𝒮𝓅𝓇𝒾𝓃𝑔</button>
+    <button onclick="Summer()" class="depthsu depth" type="button">𝒮𝓊𝓂𝓂𝑒𝓇</button>
+    <button onclick="Autumn()" class="depthau depth" type="button">𝒜𝓊𝓉𝓊𝓂𝓃</button>
+    <button onclick="Winter()" class="depthwi depth" type="button">𝒲𝒾𝓃𝓉𝑒𝓇</button>
+  </div>
+
+
 
 
 <script src="/socket.io/socket.io.js"></script>

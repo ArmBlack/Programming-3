@@ -1,10 +1,9 @@
 let LivingCreature = require("./LivingCreature")
 
-module.exports=class EaterHelper extends LivingCreature{
+module.exports = class EaterHelper extends LivingCreature{
     constructor(x, y) {
         super(x,y)
         this.energy = 30;
-        this.directions = [];
     }
     getNewCoordinates() {
         this.directions = [
@@ -20,37 +19,20 @@ module.exports=class EaterHelper extends LivingCreature{
     }
     chooseCell(char) {
         this.getNewCoordinates();
-        let found = [];
-
-        for (let i in this.directions) {
-            let x = this.directions[i][0];
-            let y = this.directions[i][1];
-
-            if (y < matrix.length && y >= 0 && x < matrix[0].length && x >= 0) {
-                if (matrix[y][x] == char) {
-                    found.push(this.directions[i]);
-                }
-            }
-            
-
-
-
-        }
-
-        return found;
+        return super.chooseCell(char)
     }
     //բազմանալ
     mul() {
         let emptyCell = this.chooseCell(0);
         let newCell = emptyCell[Math.floor(Math.random()*emptyCell)]
             ;
-        if (newCell && this.energy > 5) {
+        if (newCell && this.energy > 41) {
             let newX = newCell[0];
             let newY = newCell[1];
 
-            let grEat = new GrassEater(newX, newY);
+            let grEat = new EaterHelper(newX, newY);
             matrix[newY][newX] = 8;
-            grassEaterArr.push(grEat);
+            EaterHelperArr.push(grEat);
 
             this.energy = 10;
         }
@@ -61,7 +43,6 @@ module.exports=class EaterHelper extends LivingCreature{
     eat() {
         let emptyCell = this.chooseCell(1);
         let newCell = emptyCell[Math.floor(Math.random()*emptyCell.length)]
-
         if (newCell) {
             this.energy += 10;
             let newX = newCell[0];
@@ -82,12 +63,12 @@ module.exports=class EaterHelper extends LivingCreature{
 
 
 
-            if (this.energy > 2) {
+            if (this.energy > 50) {
                 this.mul()
-            }else {
-                this.move()
             }
 
+        }else {
+            this.move()
         }
     
     }

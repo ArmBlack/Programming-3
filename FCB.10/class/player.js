@@ -4,7 +4,6 @@ module.exports=class Player extends LivingCreature{
     constructor(x, y) {
         super(x,y)
         this.energy = 20;
-        this.directions = [];
     }
     getNewCoordinates() {
         this.directions = [

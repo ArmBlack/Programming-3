@@ -205,7 +205,7 @@ Ball = require("./class/ball")
 Wall = require("./class/wall")
 Player = require("./class/player")
 Divader = require("./class/divader")
-EaterHelper = require("./class/EaterHelper")
+EaterHelper = require("./class/eaterHelper")
 Meteor = require("./class/meteor")
 Empty = require("./class/empty")
 
@@ -214,31 +214,31 @@ function createObject(){
         for (let x = 0; x < matrix[y].length; x++) {
 
             if (matrix[y][x] == 1) {
-                var gr = new Grass(x, y)
+                let gr = new Grass(x, y)
                 grassArr.push(gr)
             } else if (matrix[y][x] == 2) {
-                var grEat = new GrassEater(x, y)
+                let grEat = new GrassEater(x, y)
                 grassEaterArr.push(grEat)
             } else if (matrix[y][x] == 3) {
-                var pred = new Predator(x, y)
+                let pred = new Predator(x, y)
                 predatorArr.push(pred)
             } else if (matrix[y][x] == 4) {
-                var ba = new Ball(x, y)
+                let ba = new Ball(x, y)
                 ballArr.push(ba)
             } else if (matrix[y][x] == 5) {
-                var wall = new Wall(x, y)
+                let wall = new Wall(x, y)
                 wallArr.push(wall)
             } else if (matrix[y][x] == 6) {
-                var play = new Player(x, y)
+                let play = new Player(x, y)
                 playerArr.push(play)
             } else if (matrix[y][x] == 7) {
-                var  div = new Divader(x, y)
+                let  div = new Divader(x, y)
                 divaderArr.push(div)
             } else if (matrix[y][x] == 8) {
-                var  help= new EaterHelper(x, y)
+                let  help = new EaterHelper(x, y)
                 EaterHelperArr.push(help)
             }else if (matrix[y][x] == 9) {
-                var  help= new Meteor(x, y)
+                let  help= new Meteor(x, y)
                 metiorArr.push(help)
              }
         }
@@ -262,10 +262,6 @@ function AddGrass(){
     }
 }
 
-io.on("connection",function (socket){
-    createObject()
-    socket.on("addGrass",AddGrass)
-})
 
 function AddGrassEater(){
     for(let i = 0; i < 3 ;i++){
@@ -286,8 +282,10 @@ function AddGrassEater(){
 
     }
 }
+
+
 function AddEaterHelper(){
-    for(let i = 0; i < 3 ;i++){
+    for(let i = 0; i < 8 ;i++){
 
         var x = Math.floor(Math.random() * matrix.length)
         var y = Math.floor(Math.random() * matrix.length)
@@ -318,6 +316,29 @@ function AddPredator(){
 
     }
 }
+
+function KillAll() {
+    grassArr = []
+    grassEaterArr = []
+    predatorArr = []
+    playerArr = []
+    divaderArr = []
+    EaterHelperArr = []
+
+    
+    
+    
+    
+    for (var y = 0; y < matrix.length; y++) {
+        for (var x = 0; x < matrix[y].length; x++) {
+                
+                matrix[y][x] = 0;
+        }
+    }
+    io.sockets.emit("send matrix",matrix)
+}
+
+
 function Winter() {
     weath = "winter";
     io.sockets.emit('Winter', weath);
@@ -336,19 +357,8 @@ function Autumn() {
     weath = "autumn";
     io.sockets.emit('Autumn', weath);
 }
-io.on("connection",function (socket){
-    createObject()
-    socket.on("AddPredator",AddPredator)
-})
 
-io.on("connection",function (socket){
-    createObject()
-    socket.on("addGrassEater",AddGrassEater)
-})
-io.on("connection",function (socket){
-    createObject()
-    socket.on("AddEaterHelper",AddEaterHelper)
-})
+
 function game(){
     for (let i in grassArr) {
         grassArr[i].mul()
@@ -381,8 +391,9 @@ function game(){
         divaderArr[i].move()
     }
     for (let i in EaterHelperArr) {
-        EaterHelperArr[i].move()
+        EaterHelperArr[i].eat() 
     }
+
     for (let i in metiorArr) {
         metiorArr[i].move()
     }
@@ -390,6 +401,7 @@ function game(){
 }
 
 setInterval(game,200)
+var weather;
 
 
 
@@ -397,31 +409,18 @@ setInterval(game,200)
 // window.location.Restart()
 // }
 
-function KillAll() {
-    grassArr = []
-    grassEaterArr = []
-    predatorArr = []
-    ballArr = []
-    
-    playerArr = []
-    divaderArr = []
-    EaterHelperArr = []
-
-    
-    
-    
-    
-    for (var y = 0; y < matrix.length; y++) {
-        for (var x = 0; x < matrix[y].length; x++) {
-            matrix[y][x] = 0;
-        }
-    }
-    io.sockets.emit("send matrix",matrix)
-}
 
 io.on("connection",function (socket){
     createObject()
+    socket.on("addGrass",AddGrass)
+    socket.on("addGrassEater",AddGrassEater)
+    socket.on("AddEaterHelper",AddEaterHelper)
+    socket.on("AddPredator",AddPredator)
     socket.on("killAll",KillAll)
+    socket.on("spring", Spring);
+    socket.on("summer", Summer);
+    socket.on("autumn", Autumn);
+    socket.on("winter", Winter);
 })
 
 

@@ -4,8 +4,7 @@ module.exports=class GrassEater extends LivingCreature{
     constructor(x, y) {
        super(x,y)
         this.energy = 10;
-        this.directions = [];
-    }
+        }
     getNewCoordinates() {
         this.directions = [
           
