@@ -99,6 +99,17 @@ function AddEaterHelper(){
     socket.emit("AddEaterHelper");
 }
 
-
+function Winter() {
+    socket.emit("winter");
+}
+function Summer() {
+    socket.emit("summer");
+}
+function Spring() {
+    socket.emit("spring");
+}
+function Autumn() {
+    socket.emit("autumn");
+}
 
 socket.on("send matrix",draws)

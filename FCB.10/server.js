@@ -318,7 +318,24 @@ function AddPredator(){
 
     }
 }
+function Winter() {
+    weath = "winter";
+    io.sockets.emit('Winter', weath);
+}
 
+function Summer() {
+    weath = "summer";
+    io.sockets.emit('Summer', weath);
+}
+
+function Spring() {
+    weath = "spring";
+    io.sockets.emit('Spring', weath);
+}
+function Autumn() {
+    weath = "autumn";
+    io.sockets.emit('Autumn', weath);
+}
 io.on("connection",function (socket){
     createObject()
     socket.on("AddPredator",AddPredator)
@@ -330,7 +347,7 @@ io.on("connection",function (socket){
 })
 io.on("connection",function (socket){
     createObject()
-    socket.on("addEaterHelper",AddEaterHelper)
+    socket.on("AddEaterHelper",AddEaterHelper)
 })
 function game(){
     for (let i in grassArr) {

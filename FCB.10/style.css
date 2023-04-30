@@ -57,3 +57,16 @@ h1 {
   text-align: center;
   font-family: 'Yellowtail', cursive;
 }
+.header{
+  width:66%;
+  margin: 200px auto;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+} 
+.header h1{
+  color:#2dff03 ;
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 120px;
+}
+
